@@ -166,7 +166,7 @@ button { font-family: inherit; }
   font-size: 13px; font-weight: 600; cursor: pointer; border-right: 1px solid var(--line-strong);
 }
 .seg-btn:last-child { border-right: none; }
-.seg-btn.is-active { background: var(--accent-soft); color: var(--accent); }
+.seg-btn.is-active { background: var(--accent); color: var(--accent-ink); }
 
 /* ---------- output card ---------- */
 .output-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
