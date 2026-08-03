@@ -1,6 +1,62 @@
 "use strict";
 
 /* ========================================================================
+   Access gate
+   ======================================================================== */
+
+const GATE_HASH = "c4350db7121bca2619465b4fcf67547490c2ff95349e90547298dd144497d9de";
+
+async function sha256Hex(str) {
+  const bytes = new TextEncoder().encode(str);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+function initGate() {
+  const gate = document.getElementById("gate");
+  const form = document.getElementById("gateForm");
+  const input = document.getElementById("gatePassword");
+  const error = document.getElementById("gateError");
+
+  if (gate.classList.contains("is-unlocked")) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const hash = await sha256Hex(input.value.trim());
+    if (hash === GATE_HASH) {
+      localStorage.setItem("landed_access", "granted");
+      gate.classList.add("is-unlocked");
+      error.classList.remove("is-visible");
+    } else {
+      error.classList.add("is-visible");
+      input.value = "";
+      input.focus();
+    }
+  });
+}
+
+/* ========================================================================
+   Theme toggle
+   ======================================================================== */
+
+function initTheme() {
+  const toggle = document.getElementById("themeToggle");
+  const root = document.documentElement;
+
+  function effectiveTheme() {
+    const attr = root.getAttribute("data-theme");
+    if (attr === "dark" || attr === "light") return attr;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  toggle.addEventListener("click", () => {
+    const next = effectiveTheme() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("landed_theme", next);
+  });
+}
+
+/* ========================================================================
    Data
    ======================================================================== */
 
@@ -148,10 +204,6 @@ function initProfile() {
     document.dispatchEvent(new CustomEvent("profile:updated"));
   });
 
-  // First-run nudge
-  if (!profile.name) {
-    setTimeout(() => backdrop.classList.add("is-open"), 400);
-  }
 }
 
 /* ========================================================================
@@ -499,6 +551,8 @@ function initTracker() {
    ======================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  initGate();
+  initTheme();
   initTabs();
   initProfile();
   initScripts();
