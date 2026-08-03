@@ -86,7 +86,7 @@ button { font-family: inherit; }
   flex-wrap: wrap;
 }
 .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
-.brand-mark { color: var(--accent); display: flex; }
+.brand-mark { display: flex; flex-shrink: 0; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
 .brand-tag { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }

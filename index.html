@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Landed — Client Acquisition Toolkit</title>
 <meta name="description" content="Find prospects, price the work, and track the close — the client acquisition toolkit for agencies and freelancers." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234636E3'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='%23FAF9F6' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='4' y1='2' x2='28' y2='30' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%234636E3'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M16 7v11' stroke='%23FAF9F6' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M10.5 13.5L16 19l5.5-5.5' stroke='%23FAF9F6' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M9 24h14' stroke='%23FAF9F6' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,7 +13,18 @@
 <header class="topbar">
   <div class="brand">
     <span class="brand-mark" aria-hidden="true">
-      <svg width="22" height="22" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M9 17l5 5 9-11" stroke="var(--bg)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="26" height="26" viewBox="0 0 32 32">
+        <defs>
+          <linearGradient id="landedMark" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4636E3" />
+            <stop offset="1" stop-color="#7C3AED" />
+          </linearGradient>
+        </defs>
+        <rect width="32" height="32" rx="8" fill="url(#landedMark)" />
+        <path d="M16 7v11" stroke="#FAF9F6" stroke-width="2.6" stroke-linecap="round" />
+        <path d="M10.5 13.5L16 19l5.5-5.5" stroke="#FAF9F6" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M9 24h14" stroke="#FAF9F6" stroke-width="2.6" stroke-linecap="round" />
+      </svg>
     </span>
     <div class="brand-text">
       <span class="brand-name">Landed</span>
